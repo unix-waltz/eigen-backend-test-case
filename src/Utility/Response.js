@@ -1,13 +1,13 @@
 const Response = ({
     response,
-    statuscode = 200,
-    datas = [],
-    message = "",
+    code = 200,
+    data = [],
+    msg = "",
 }) => {
-    response.status(statuscode).json({
-        statuscode: statuscode,
-        message: message,
-        datas: datas
+    response.status(code).json({
+        statuscode: code,
+        message: msg,
+        datas: data
     });
 };
 
