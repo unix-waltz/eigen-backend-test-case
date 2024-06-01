@@ -14,13 +14,14 @@ datasource db {
 }
 
 model Books {
-  id        Int        @id @default(autoincrement())
-  code      String     @unique
-  createdAt DateTime   @default(now())
-  title     String     @db.VarChar(255)
-  author    String     @db.VarChar(255)
-  status    BookStatus @default(CANBEBORROWED)
-  stock     Int        @default(1)
+  id          Int           @id @default(autoincrement())
+  code        String        @unique
+  createdAt   DateTime      @default(now())
+  title       String        @db.VarChar(255)
+  author      String        @db.VarChar(255)
+  status      BookStatus    @default(CANBEBORROWED)
+  stock       Int           @default(1)
+  Transaction Transaction[]
 }
 
 enum BookStatus {
@@ -28,9 +29,26 @@ enum BookStatus {
   CANBEBORROWED
 }
 
+enum TransactionStatus {
+  ACTIVE
+  RETURNED
+}
+
 model User {
-  id      Int     @id @default(autoincrement())
-  name    String?
-  penalty Boolean @default(false)
-  code    String  @unique
+  id          Int           @id @default(autoincrement())
+  name        String?
+  penalty     Boolean       @default(false)
+  code        String        @unique
+  transaction Transaction[]
+}
+
+model Transaction {
+  id     Int               @id @default(autoincrement())
+  userId Int               @unique
+  bookId Int               @unique
+  user   User              @relation(fields: [userId], references: [id])
+  book   Books             @relation(fields: [bookId], references: [id])
+  Status TransactionStatus @default(ACTIVE)
+
+  @@unique([userId, bookId])
 }
