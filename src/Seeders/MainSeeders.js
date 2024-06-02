@@ -15,6 +15,7 @@ const bookData = [
     { code: "M1210", name: "RIO PUTRA PRATAMA"},
   ];
   async function deleteAllData() {
+    await prisma.transaction.deleteMany()
     await prisma.books.deleteMany({}); 
     console.log("Books deleted successfully!"); 
     await prisma.user.deleteMany({}); 
