@@ -25,7 +25,7 @@ Eiden API is a library management system built with Express.js and Prisma. This 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/eiden-api.git
+   git clone https://github.com/unix-waltz/eigen-backend-test-case.git
    cd eiden-api
    ```
 
@@ -110,9 +110,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For any inquiries or questions, feel free to reach out:
 
-- Name: Your Name
-- Email: your.email@example.com
-- Website: [https://yourwebsite.com](https://yourwebsite.com)
+- Name: RIO PUTRA PRATAMA
+- Email: riosraskaa@gmail.com
+- Website: [https://unix-waltz.github.io](https://unix-waltz.github.io)
 ```
-
-Replace the placeholders like `https://github.com/yourusername/eiden-api.git`, `Your Name`, `your.email@example.com`, and `https://yourwebsite.com` with your actual project repository URL and your contact information.
