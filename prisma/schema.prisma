@@ -12,6 +12,7 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
 model Books {
   id          Int           @id @default(autoincrement())
   code        String        @unique
@@ -20,7 +21,7 @@ model Books {
   author      String        @db.VarChar(255)
   status      BookStatus    @default(CANBEBORROWED)
   stock       Int           @default(1)
-  Transaction Transaction[]
+  transaction Transaction[]
 }
 
 enum BookStatus {
@@ -39,11 +40,14 @@ model User {
   penalty     Penalty       @default(FALSE)
   code        String        @unique
   transaction Transaction[]
+  penaltyAt   DateTime?
 }
+
 enum Penalty {
   TRUE
   FALSE
 }
+
 model Transaction {
   id         Int               @id @default(autoincrement())
   userId     Int
@@ -52,6 +56,5 @@ model Transaction {
   returnedAt DateTime?
   user       User              @relation(fields: [userId], references: [id])
   book       Books             @relation(fields: [bookId], references: [id])
-  Status     TransactionStatus @default(ACTIVE)
+  status     TransactionStatus @default(ACTIVE)
 }
-
